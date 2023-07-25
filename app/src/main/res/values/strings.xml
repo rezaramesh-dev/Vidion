@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Vidion</string>
+    <string name="all_videos">All Videos</string>
+    <string name="all_folders">All folders</string>
+    <string name="total_videos">Total Videos:</string>
+    <string name="total_folders">Total Folders:</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="feedback">Feedback</string>
+    <string name="themes">Themes</string>
+    <string name="sort_order">Sort Order</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="video_name">Video Name</string>
+    <string name="folder_name">Folder Name</string>
+    <string name="image">Image</string>
+    <string name="duration">00:00</string>
+    <string name="loading">Loading..</string>
+    <string name="semi_colon">:</string>
+
+    <string name="lock">Lock Icon</string>
+    <string name="menu">Menu</string>
+    <string name="back_btn">back btn</string>
+
+    <string name="audio_track">Audio Track</string>
+    <string name="subtitles">Subtitles</string>
+    <string name="booster">Booster</string>
+    <string name="speed">Speed</string>
+    <string name="sleep_timer">Sleep Timer</string>
+    <string name="pip_mode">PIP Mode</string>
+
+    <string name="search">Search</string>
+
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
+    <string name="info">Info</string>
+    <string name="share">Share</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

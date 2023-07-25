@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/back_white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consAudioTrack"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/audioTrack"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/neo_medium"
+            android:gravity="start|center_vertical"
+            android:text="@string/audio_track"
+            android:textAllCaps="false"
+            android:textColor="#6262FF"
+            app:icon="@drawable/ic_audiotrack"
+            app:iconGravity="start"
+            app:iconTint="#6262FF" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consSubtitlesBtn"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consAudioTrack">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subtitlesBtn"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/neo_medium"
+            android:gravity="start|center_vertical"
+            android:text="@string/subtitles"
+            android:textAllCaps="false"
+            android:textColor="#6262FF"
+            app:icon="@drawable/ic_subtitles"
+            app:iconGravity="start"
+            app:iconTint="#6262FF" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consSpeedBtn"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consSubtitlesBtn">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/speedBtn"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/neo_medium"
+            android:gravity="start|center_vertical"
+            android:text="@string/speed"
+            android:textAllCaps="false"
+            android:textColor="#6262FF"
+            app:icon="@drawable/ic_speed"
+            app:iconGravity="start"
+            app:iconTint="#6262FF" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consSleepTimer"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consSpeedBtn">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sleepTimer"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/neo_medium"
+            android:gravity="start|center_vertical"
+            android:text="@string/sleep_timer"
+            android:textAllCaps="false"
+            android:textColor="#6262FF"
+            app:icon="@drawable/ic_timer"
+            app:iconGravity="start"
+            app:iconTint="#6262FF" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consPipModeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consSleepTimer">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/pipModeBtn"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/neo_medium"
+            android:gravity="start|center_vertical"
+            android:text="@string/pip_mode"
+            android:textAllCaps="false"
+            android:textColor="#6262FF"
+            app:icon="@drawable/ic_pip"
+            app:iconGravity="start"
+            app:iconTint="#6262FF" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
