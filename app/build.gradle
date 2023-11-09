@@ -8,17 +8,27 @@ plugins {
 
 android {
     signingConfigs {
-
-
+    debug {
+        storePassword 'Kv8kBuCLc3'
+        keyAlias 'key'
+        keyPassword 'Kv8kBuCLc3'
+        storeFile file('/Users/rezaramesh/Documents/android project/App Keys/Videion/Vidion')
     }
-    compileSdk 33
+        release {
+            storePassword 'Kv8kBuCLc3'
+            keyPassword 'Kv8kBuCLc3'
+            keyAlias 'key'
+            storeFile file('/Users/rezaramesh/Documents/android project/App Keys/Videion/Vidion')
+        }
+    }
+    compileSdk 34
 
     defaultConfig {
         applicationId "app.onestack.vidion"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 3
-        versionName "1.2.0"
+        versionName "1.2.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,11 +40,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_18
+        targetCompatibility JavaVersion.VERSION_18
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_18
     }
     buildFeatures {
         viewBinding true
@@ -43,27 +53,27 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.4.0'
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.3.0'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.5.1'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.5.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
 
     implementation 'com.google.android.exoplayer:exoplayer-core:2.17.1'//don't update
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.17.1'//don't update
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.17.1'//don't update
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
 
     implementation 'com.github.lukelorusso:VerticalSeekBar:1.2.7'
 

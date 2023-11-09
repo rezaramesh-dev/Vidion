@@ -664,37 +664,38 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
     override fun onSingleTapUp(p0: MotionEvent): Boolean = false
 
     override fun onLongPress(p0: MotionEvent) = Unit
-
-    override fun onFling(p0: MotionEvent, p1: MotionEvent, p2: Float, p3: Float): Boolean = false
+    override fun onFling(p0: MotionEvent?, p1: MotionEvent, p2: Float, p3: Float): Boolean= false
 
     override fun onScroll(
-        event: MotionEvent, event1: MotionEvent, distanceX: Float, distanceY: Float
+        event: MotionEvent?, event1: MotionEvent, distanceX: Float, distanceY: Float
     ): Boolean {
-        val sWidth = Resources.getSystem().displayMetrics.widthPixels
-        val sHeight = Resources.getSystem().displayMetrics.heightPixels
+        if (event != null){
+            val sWidth = Resources.getSystem().displayMetrics.widthPixels
+            val sHeight = Resources.getSystem().displayMetrics.heightPixels
 
-        val border = 100 * Resources.getSystem().displayMetrics.density.toInt()
-        if (event.x < border || event.y < border || event.x > sWidth - border || event.y > sHeight - border) return false
+            val border = 100 * Resources.getSystem().displayMetrics.density.toInt()
+            if (event.x < border || event.y < border || event.x > sWidth - border || event.y > sHeight - border) return false
 
-        if (abs(distanceX) < abs(distanceY)) {
-            if (event.x < sWidth / 2) {
-                binding.icBrightness.visibility = View.VISIBLE
-                binding.icVolume.visibility = View.GONE
-                val increase = distanceY > 0
-                val newValue = if (increase) brightness + 1 else brightness - 1
-                if (newValue in 0..30) brightness = newValue
-                binding.icBrightness.text = brightness.toString()
-                setScreenBrightness(brightness)
-            } else {
-                binding.icBrightness.visibility = View.GONE
-                binding.icVolume.visibility = View.VISIBLE
+            if (abs(distanceX) < abs(distanceY)) {
+                if (event.x < sWidth / 2) {
+                    binding.icBrightness.visibility = View.VISIBLE
+                    binding.icVolume.visibility = View.GONE
+                    val increase = distanceY > 0
+                    val newValue = if (increase) brightness + 1 else brightness - 1
+                    if (newValue in 0..30) brightness = newValue
+                    binding.icBrightness.text = brightness.toString()
+                    setScreenBrightness(brightness)
+                } else {
+                    binding.icBrightness.visibility = View.GONE
+                    binding.icVolume.visibility = View.VISIBLE
 
-                val maxVolume = audioManager!!.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
-                val increase = distanceY > 0
-                val newValue = if (increase) volume + 1 else volume - 1
-                if (newValue in 0..30) volume = newValue
-                binding.icBrightness.text = volume.toString()
-                audioManager!!.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0)
+                    val maxVolume = audioManager!!.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+                    val increase = distanceY > 0
+                    val newValue = if (increase) volume + 1 else volume - 1
+                    if (newValue in 0..30) volume = newValue
+                    binding.icBrightness.text = volume.toString()
+                    audioManager!!.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0)
+                }
             }
         }
         return true
