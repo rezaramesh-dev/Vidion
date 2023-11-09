@@ -94,7 +94,8 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
         WindowInsetsControllerCompat(window, binding.root).let { controller ->
             controller.hide(WindowInsetsCompat.Type.systemBars())
             //controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_BARS_BY_SWIPE
-            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            controller.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
 
         //for handling video file intent
@@ -141,21 +142,25 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
                 playerList.addAll(MainActivity.videoList)
                 createPlayer()
             }
+
             "FolderActivity" -> {
                 playerList = ArrayList()
                 playerList.addAll(FoldersActivity.currentFolderVideo)
                 createPlayer()
             }
+
             "SearchedVideos" -> {
                 playerList = ArrayList()
                 playerList.addAll(MainActivity.searchList)
                 createPlayer()
             }
+
             "SortVideos" -> {
                 playerList = ArrayList()
                 playerList.addAll(MainActivity.sortList)
                 createPlayer()
             }
+
             "NowPlaying" -> {
                 speed = 1.0f
                 videoTitle.text = playerList[position].title
@@ -173,26 +178,6 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
 
     @SuppressLint("PrivateResource", "SetTextI18n", "UseCompatLoadingForDrawables")
     private fun initializeBinding() {
-
-        /*findViewById<FrameLayout>(R.id.forwardFL).setOnClickListener(DoubleClickListener(callback = object :
-            DoubleClickListener.Callback {
-            override fun doubleClicked() {
-                binding.playerView.showController()
-                findViewById<ImageButton>(R.id.forwardBtn).visibility = View.VISIBLE
-                player.seekTo(player.currentPosition + 10000)
-                moreTime = 0
-            }
-        }))
-
-        findViewById<FrameLayout>(R.id.rewindFL).setOnClickListener(DoubleClickListener(callback = object :
-            DoubleClickListener.Callback {
-            override fun doubleClicked() {
-                binding.playerView.showController()
-                findViewById<ImageButton>(R.id.rewindBtn).visibility = View.VISIBLE
-                player.seekTo(player.currentPosition - 10000)
-                moreTime = 0
-            }
-        }))*/
 
         val customDialog =
             LayoutInflater.from(this).inflate(R.layout.more_features, binding.root, false)
@@ -251,7 +236,6 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
             }
         }
 
-
         findViewById<ImageView>(R.id.lockBtnOnLock).setOnClickListener {
             //for showing
             isLocked = false
@@ -279,7 +263,7 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
                 }
             }
 
-            val tempTracks = audioTrack.toArray(arrayOfNulls<CharSequence>(audioTrack.size))
+            // val tempTracks = audioTrack.toArray(arrayOfNulls<CharSequence>(audioTrack.size))
 
             bindingMF.audioTrack.setOnClickListener {
                 dialog.dismiss()
@@ -287,16 +271,14 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
                 val audioTrack = ArrayList<String>()
                 val audioList = ArrayList<String>()
 
-                for (group in player.currentTracksInfo.trackGroupInfos) {
-                    if (group.trackType == C.TRACK_TYPE_AUDIO) {
-                        val groupInfo = group.trackGroup
+                for (group in player.currentTracks.groups) {
+                    if (group.type == C.TRACK_TYPE_AUDIO) {
+                        val groupInfo = group.mediaTrackGroup
                         for (i in 0 until groupInfo.length) {
                             audioTrack.add(groupInfo.getFormat(i).language.toString())
                             audioList.add(
                                 "${audioList.size + 1}. " + Locale(groupInfo.getFormat(i).language.toString()).displayLanguage + " (${
-                                    groupInfo.getFormat(
-                                        i
-                                    ).label
+                                    groupInfo.getFormat(i).label
                                 })"
                             )
                         }
@@ -592,8 +574,7 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
     override fun onPause() {
         super.onPause()
         try {
-            if (!isInPictureInPictureMode) pauseVideo()
-            else playVideo()
+            if (!isInPictureInPictureMode) pauseVideo() else playVideo()
         } catch (_: Exception) {
         }
     }
@@ -664,12 +645,12 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
     override fun onSingleTapUp(p0: MotionEvent): Boolean = false
 
     override fun onLongPress(p0: MotionEvent) = Unit
-    override fun onFling(p0: MotionEvent?, p1: MotionEvent, p2: Float, p3: Float): Boolean= false
+    override fun onFling(p0: MotionEvent?, p1: MotionEvent, p2: Float, p3: Float): Boolean = false
 
     override fun onScroll(
         event: MotionEvent?, event1: MotionEvent, distanceX: Float, distanceY: Float
     ): Boolean {
-        if (event != null){
+        if (event != null) {
             val sWidth = Resources.getSystem().displayMetrics.widthPixels
             val sHeight = Resources.getSystem().displayMetrics.heightPixels
 
@@ -689,7 +670,7 @@ class PlayerActivity : AppCompatActivity(), AudioManager.OnAudioFocusChangeListe
                     binding.icBrightness.visibility = View.GONE
                     binding.icVolume.visibility = View.VISIBLE
 
-                    val maxVolume = audioManager!!.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+                    //val maxVolume = audioManager!!.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
                     val increase = distanceY > 0
                     val newValue = if (increase) volume + 1 else volume - 1
                     if (newValue in 0..30) volume = newValue
